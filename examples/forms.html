@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <title>表单示例 - IE8 UI Components</title>
+    
+    <!-- IE8 UI Framework CSS -->
+    <link rel="stylesheet" href="../css/ie8-ui.css">
+    
+    <style>
+        .example-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        .example-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+        
+        .example-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 5px;
+        }
+        
+        .form-example {
+            margin-bottom: 20px;
+        }
+        
+        .form-horizontal .form-group {
+            overflow: hidden;
+            zoom: 1;
+        }
+        
+        .form-horizontal .form-label {
+            float: left;
+            width: 150px;
+            padding-top: 6px;
+            text-align: right;
+            margin-right: 15px;
+        }
+        
+        .form-horizontal .form-controls {
+            margin-left: 165px;
+        }
+        
+        .validation-result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            display: none;
+        }
+        
+        .code-example {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="example-container">
+        <!-- Header -->
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #0066cc; margin-bottom: 10px;">表单组件示例</h1>
+            <p style="color: #666;">IE8 兼容的表单控件和验证功能演示</p>
+            <a href="../index.html" style="color: #0066cc; text-decoration: none;">&larr; 返回主页</a>
+        </div>
+
+        <!-- 基础表单 -->
+        <div class="example-section">
+            <h2 class="example-title">基础表单</h2>
+            
+            <div class="form-example">
+                <form id="basic-form">
+                    <div class="form-group">
+                        <label class="form-label" for="basic-name">姓名 *</label>
+                        <input type="text" id="basic-name" class="form-control" required placeholder="请输入您的姓名">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="basic-email">邮箱 *</label>
+                        <input type="email" id="basic-email" class="form-control" required placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="basic-phone">电话</label>
+                        <input type="text" id="basic-phone" class="form-control" pattern="[0-9]{11}" placeholder="手机号码">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="basic-message">留言</label>
+                        <textarea id="basic-message" class="form-textarea" rows="4" placeholder="请输入您的留言"></textarea>
+                    </div>
+                    
+                    <div class="checkbox">
+                        <input type="checkbox" id="basic-agree" required>
+                        <label for="basic-agree">我同意服务条款和隐私政策 *</label>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-primary">提交表单</button>
+                        <button type="reset" class="btn">重置</button>
+                    </div>
+                </form>
+                
+                <div id="basic-result" class="validation-result">
+                    <h4>表单提交结果：</h4>
+                    <div id="basic-result-content"></div>
+                </div>
+            </div>
+
+            <div class="code-example">
+&lt;form id="basic-form"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label class="form-label" for="name"&gt;姓名 *&lt;/label&gt;
+        &lt;input type="text" id="name" class="form-control" required&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label class="form-label" for="email"&gt;邮箱 *&lt;/label&gt;
+        &lt;input type="email" id="email" class="form-control" required&gt;
+    &lt;/div&gt;
+    
+    &lt;button type="submit" class="btn btn-primary"&gt;提交&lt;/button&gt;
+&lt;/form&gt;
+            </div>
+        </div>
+
+        <!-- 水平表单 -->
+        <div class="example-section">
+            <h2 class="example-title">水平表单</h2>
+            
+            <div class="form-example">
+                <form id="horizontal-form" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="form-label" for="h-username">用户名 *</label>
+                        <div class="form-controls">
+                            <input type="text" id="h-username" class="form-control" required pattern="[a-zA-Z0-9]{3,20}" placeholder="3-20位字母数字">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="h-password">密码 *</label>
+                        <div class="form-controls">
+                            <input type="password" id="h-password" class="form-control" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}" placeholder="至少6位，包含大小写字母和数字">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="h-confirm">确认密码 *</label>
+                        <div class="form-controls">
+                            <input type="password" id="h-confirm" class="form-control" required placeholder="再次输入密码">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="h-gender">性别</label>
+                        <div class="form-controls">
+                            <div class="radio" style="display: inline-block; margin-right: 20px;">
+                                <input type="radio" id="h-male" name="gender" value="male">
+                                <label for="h-male">男</label>
+                            </div>
+                            <div class="radio" style="display: inline-block;">
+                                <input type="radio" id="h-female" name="gender" value="female">
+                                <label for="h-female">女</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="h-city">城市</label>
+                        <div class="form-controls">
+                            <select id="h-city" class="form-select">
+                                <option value="">请选择城市</option>
+                                <option value="beijing">北京</option>
+                                <option value="shanghai">上海</option>
+                                <option value="guangzhou">广州</option>
+                                <option value="shenzhen">深圳</option>
+                                <option value="hangzhou">杭州</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label"></label>
+                        <div class="form-controls">
+                            <div class="checkbox">
+                                <input type="checkbox" id="h-newsletter">
+                                <label for="h-newsletter">订阅邮件通知</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label"></label>
+                        <div class="form-controls">
+                            <button type="submit" class="btn btn-primary">注册账户</button>
+                            <button type="reset" class="btn">清空表单</button>
+                        </div>
+                    </div>
+                </form>
+                
+                <div id="horizontal-result" class="validation-result">
+                    <h4>注册结果：</h4>
+                    <div id="horizontal-result-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表单验证示例 -->
+        <div class="example-section">
+            <h2 class="example-title">表单验证示例</h2>
+            
+            <div class="form-example">
+                <form id="validation-form">
+                    <div class="form-group">
+                        <label class="form-label" for="v-email">邮箱验证</label>
+                        <input type="email" id="v-email" class="form-control" required placeholder="输入有效的邮箱地址">
+                        <small style="color: #666; font-size: 11px;">必须是有效的邮箱格式</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="v-url">网址验证</label>
+                        <input type="url" id="v-url" class="form-control" placeholder="http://example.com">
+                        <small style="color: #666; font-size: 11px;">可选，但必须是有效的URL格式</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="v-number">数字验证</label>
+                        <input type="number" id="v-number" class="form-control" min="1" max="100" placeholder="1-100之间的数字">
+                        <small style="color: #666; font-size: 11px;">只能输入1-100之间的数字</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="v-pattern">自定义模式</label>
+                        <input type="text" id="v-pattern" class="form-control" pattern="[A-Z]{2}[0-9]{4}" placeholder="如：AB1234">
+                        <small style="color: #666; font-size: 11px;">格式：2个大写字母 + 4个数字</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="v-length">长度限制</label>
+                        <input type="text" id="v-length" class="form-control" minlength="5" maxlength="15" placeholder="5-15个字符">
+                        <small style="color: #666; font-size: 11px;">长度必须在5-15个字符之间</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">验证表单</button>
+                </form>
+                
+                <div id="validation-result" class="validation-result">
+                    <h4>验证结果：</h4>
+                    <div id="validation-result-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 不同尺寸的表单控件 -->
+        <div class="example-section">
+            <h2 class="example-title">表单控件尺寸</h2>
+            
+            <div class="form-example">
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">大尺寸输入框</label>
+                        <input type="text" class="form-control input-large" placeholder="大尺寸输入框">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">标准尺寸输入框</label>
+                        <input type="text" class="form-control" placeholder="标准尺寸输入框">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">小尺寸输入框</label>
+                        <input type="text" class="form-control input-small" placeholder="小尺寸输入框">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">禁用状态</label>
+                        <input type="text" class="form-control" disabled value="这是禁用的输入框">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">只读状态</label>
+                        <input type="text" class="form-control" readonly value="这是只读的输入框">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include IE8 UI JavaScript -->
+    <script src="../js/ie8-ui.js"></script>
+    
+    <!-- Form example JavaScript -->
+    <script>
+        // 基础表单验证
+        document.getElementById('basic-form').onsubmit = function(e) {
+            e = e || window.event;
+            if (e.preventDefault) {
+                e.preventDefault();
+            } else {
+                e.returnValue = false;
+            }
+            
+            var validator = new IE8UI.FormValidator(this);
+            var result = document.getElementById('basic-result');
+            var content = document.getElementById('basic-result-content');
+            
+            if (validator.validate()) {
+                content.innerHTML = '<div class="alert alert-success">表单验证成功！所有字段都符合要求。</div>';
+                result.style.display = 'block';
+            } else {
+                content.innerHTML = '<div class="alert alert-danger">表单验证失败！请检查标红的字段。</div>';
+                result.style.display = 'block';
+            }
+        };
+
+        // 水平表单验证（包含密码确认）
+        document.getElementById('horizontal-form').onsubmit = function(e) {
+            e = e || window.event;
+            if (e.preventDefault) {
+                e.preventDefault();
+            } else {
+                e.returnValue = false;
+            }
+            
+            var validator = new IE8UI.FormValidator(this);
+            var result = document.getElementById('horizontal-result');
+            var content = document.getElementById('horizontal-result-content');
+            
+            // 自定义密码确认验证
+            var password = document.getElementById('h-password').value;
+            var confirm = document.getElementById('h-confirm').value;
+            
+            if (password !== confirm) {
+                validator.setFieldError(document.getElementById('h-confirm'), '两次输入的密码不一致');
+                content.innerHTML = '<div class="alert alert-danger">密码确认失败！</div>';
+                result.style.display = 'block';
+                return;
+            }
+            
+            if (validator.validate()) {
+                var formData = {
+                    username: document.getElementById('h-username').value,
+                    gender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '未选择',
+                    city: document.getElementById('h-city').value || '未选择',
+                    newsletter: document.getElementById('h-newsletter').checked ? '是' : '否'
+                };
+                
+                content.innerHTML = 
+                    '<div class="alert alert-success">' +
+                    '<strong>注册成功！</strong><br>' +
+                    '用户名：' + formData.username + '<br>' +
+                    '性别：' + formData.gender + '<br>' +
+                    '城市：' + formData.city + '<br>' +
+                    '邮件通知：' + formData.newsletter +
+                    '</div>';
+                result.style.display = 'block';
+            } else {
+                content.innerHTML = '<div class="alert alert-danger">请检查表单中的错误！</div>';
+                result.style.display = 'block';
+            }
+        };
+
+        // 验证表单示例
+        document.getElementById('validation-form').onsubmit = function(e) {
+            e = e || window.event;
+            if (e.preventDefault) {
+                e.preventDefault();
+            } else {
+                e.returnValue = false;
+            }
+            
+            var validator = new IE8UI.FormValidator(this);
+            var result = document.getElementById('validation-result');
+            var content = document.getElementById('validation-result-content');
+            
+            if (validator.validate()) {
+                content.innerHTML = '<div class="alert alert-success">所有字段验证通过！</div>';
+                result.style.display = 'block';
+            } else {
+                content.innerHTML = '<div class="alert alert-warning">部分字段验证失败，请检查输入格式。</div>';
+                result.style.display = 'block';
+            }
+        };
+
+        // 实时验证演示
+        var inputs = document.getElementsByClassName('form-control');
+        for (var i = 0; i < inputs.length; i++) {
+            IE8UI.utils.addEvent(inputs[i], 'blur', function() {
+                var form = this.form;
+                if (form) {
+                    var validator = new IE8UI.FormValidator(form, { onSubmit: false });
+                    validator.validateField(this);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
