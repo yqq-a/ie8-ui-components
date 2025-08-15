@@ -1,0 +1,849 @@
+/*!
+ * IE8 UI Components Library
+ * Version: 1.0.0
+ * Description: A comprehensive UI component library for Internet Explorer 8
+ * Author: yqq-a
+ * License: MIT
+ */
+
+/* ========================================
+   RESET & BASE STYLES
+======================================== */
+
+/* Basic Reset for IE8 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* IE8 fallback */
+    -ms-box-sizing: border-box;
+}
+
+html, body {
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* IE8 specific fixes */
+.ie8 {
+    behavior: url(htc/ie8-fixes.htc);
+}
+
+/* Clearfix for IE8 */
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ========================================
+   UTILITY CLASSES
+======================================== */
+
+.hidden { display: none !important; }
+.visible { display: block !important; }
+.invisible { visibility: hidden !important; }
+
+.pull-left { float: left !important; }
+.pull-right { float: right !important; }
+
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+
+.text-bold { font-weight: bold !important; }
+.text-normal { font-weight: normal !important; }
+
+/* ========================================
+   COLORS (IE8 Compatible)
+======================================== */
+
+.text-primary { color: #0066cc !important; }
+.text-success { color: #28a745 !important; }
+.text-warning { color: #ffc107 !important; }
+.text-danger { color: #dc3545 !important; }
+.text-info { color: #17a2b8 !important; }
+.text-muted { color: #6c757d !important; }
+
+.bg-primary { background-color: #0066cc !important; }
+.bg-success { background-color: #28a745 !important; }
+.bg-warning { background-color: #ffc107 !important; }
+.bg-danger { background-color: #dc3545 !important; }
+.bg-info { background-color: #17a2b8 !important; }
+.bg-light { background-color: #f8f9fa !important; }
+.bg-dark { background-color: #343a40 !important; }
+
+/* ========================================
+   GRID SYSTEM (IE8 Compatible)
+======================================== */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    zoom: 1;
+}
+
+.row {
+    width: 100%;
+    zoom: 1;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.col-1 { width: 8.33%; float: left; }
+.col-2 { width: 16.66%; float: left; }
+.col-3 { width: 25%; float: left; }
+.col-4 { width: 33.33%; float: left; }
+.col-5 { width: 41.66%; float: left; }
+.col-6 { width: 50%; float: left; }
+.col-7 { width: 58.33%; float: left; }
+.col-8 { width: 66.66%; float: left; }
+.col-9 { width: 75%; float: left; }
+.col-10 { width: 83.33%; float: left; }
+.col-11 { width: 91.66%; float: left; }
+.col-12 { width: 100%; float: left; }
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    /* IE8 gradient fallback */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6');
+    zoom: 1;
+}
+
+.btn:hover {
+    background-color: #e6e6e6;
+    border-color: #adadad;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#d9d9d9');
+    text-decoration: none;
+}
+
+.btn:active {
+    background-color: #d4d4d4;
+    border-color: #8c8c8c;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e6e6e6', endColorstr='#cccccc');
+}
+
+.btn:focus {
+    outline: thin dotted #333;
+    outline-offset: -2px;
+}
+
+/* Button Sizes */
+.btn-large {
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+.btn-small {
+    padding: 4px 8px;
+    font-size: 11px;
+}
+
+.btn-mini {
+    padding: 2px 6px;
+    font-size: 10px;
+}
+
+/* Button Colors */
+.btn-primary {
+    background-color: #0066cc;
+    border-color: #0055aa;
+    color: #fff;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0077dd', endColorstr='#0055aa');
+}
+
+.btn-primary:hover {
+    background-color: #0055aa;
+    border-color: #004499;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0066cc', endColorstr='#004499');
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #1e7e34;
+    color: #fff;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2fb344', endColorstr='#1e7e34');
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #d39e00;
+    color: #000;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffcd39', endColorstr='#d39e00');
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #bd2130;
+    color: #fff;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e15361', endColorstr='#bd2130');
+}
+
+/* ========================================
+   FORMS
+======================================== */
+
+.form-group {
+    margin-bottom: 15px;
+    zoom: 1;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    /* IE8 doesn't support box-sizing, so we use padding-box */
+}
+
+.form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    /* IE8 compatible box-shadow alternative */
+    filter: progid:DXImageTransform.Microsoft.glow(color=#66afe9, strength=1);
+}
+
+.form-control[disabled] {
+    background-color: #eee;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Input Sizes */
+.input-large {
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+.input-small {
+    padding: 4px 8px;
+    font-size: 11px;
+}
+
+/* Select */
+.form-select {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+/* Textarea */
+.form-textarea {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+
+/* Checkbox & Radio */
+.checkbox, .radio {
+    display: block;
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.checkbox input[type="checkbox"],
+.radio input[type="radio"] {
+    float: left;
+    margin-left: -20px;
+    margin-top: 4px;
+}
+
+/* ========================================
+   TABLES
+======================================== */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.table th {
+    font-weight: bold;
+    background-color: #f5f5f5;
+    /* IE8 gradient */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#f0f0f0');
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* IE8 doesn't support nth-child, so we use a class */
+.table-striped tbody tr.odd {
+    background-color: #f9f9f9;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border-left: 1px solid #ddd;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* ========================================
+   MODALS (IE8 Compatible)
+======================================== */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    /* IE8 opacity */
+    filter: alpha(opacity=50);
+    zoom: 1;
+    display: none;
+}
+
+.modal-dialog {
+    position: relative;
+    width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border: 1px solid #999;
+    /* IE8 shadow simulation */
+    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=3, OffY=3, Color='gray', Positive='true');
+}
+
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#f0f0f0');
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 15px;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+}
+
+.modal-close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-decoration: none;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+
+.modal-close:hover {
+    color: #000;
+    text-decoration: none;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+/* ========================================
+   ALERTS
+======================================== */
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    background-color: #f4f4f4;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.alert-dismissible {
+    padding-right: 35px;
+}
+
+.alert-close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.alert-close:hover {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+
+/* ========================================
+   NAVIGATION
+======================================== */
+
+.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav > li {
+    position: relative;
+    display: block;
+}
+
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.nav > li > a:hover {
+    text-decoration: none;
+    background-color: #eee;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+}
+
+.nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+}
+
+.nav-tabs > li > a:hover {
+    border-color: #eee #eee #ddd;
+}
+
+.nav-tabs > li.active > a {
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
+}
+
+/* ========================================
+   PANELS
+======================================== */
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.panel-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f5f5f5;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#f0f0f0');
+}
+
+.panel-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.panel-footer {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+}
+
+/* Panel Colors */
+.panel-primary {
+    border-color: #0066cc;
+}
+
+.panel-primary .panel-header {
+    color: #fff;
+    background-color: #0066cc;
+    border-color: #0066cc;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0077dd', endColorstr='#0055aa');
+}
+
+.panel-success {
+    border-color: #28a745;
+}
+
+.panel-success .panel-header {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.panel-warning {
+    border-color: #ffc107;
+}
+
+.panel-warning .panel-header {
+    color: #000;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.panel-danger {
+    border-color: #dc3545;
+}
+
+.panel-danger .panel-header {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* ========================================
+   PROGRESS BARS
+======================================== */
+
+.progress {
+    height: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+}
+
+.progress-bar {
+    float: left;
+    width: 0%;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #0066cc;
+    /* IE8 gradient */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0077dd', endColorstr='#0055aa');
+}
+
+.progress-bar-success {
+    background-color: #28a745;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2fb344', endColorstr='#1e7e34');
+}
+
+.progress-bar-warning {
+    background-color: #ffc107;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffcd39', endColorstr='#d39e00');
+}
+
+.progress-bar-danger {
+    background-color: #dc3545;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e15361', endColorstr='#bd2130');
+}
+
+/* ========================================
+   TOOLTIPS (IE8 Compatible)
+======================================== */
+
+.tooltip {
+    position: absolute;
+    z-index: 1030;
+    display: block;
+    font-size: 11px;
+    line-height: 1.4;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    visibility: hidden;
+}
+
+.tooltip.in {
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    visibility: visible;
+}
+
+.tooltip-inner {
+    max-width: 200px;
+    padding: 3px 8px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    background-color: #000;
+}
+
+/* ========================================
+   DROPDOWN
+======================================== */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    /* IE8 shadow simulation */
+    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true');
+}
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.dropdown-menu > li > a:hover {
+    color: #262626;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+
+.dropdown-menu > .active > a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #0066cc;
+    outline: 0;
+}
+
+.dropdown-menu > .disabled > a {
+    color: #999;
+}
+
+.dropdown-menu > .disabled > a:hover {
+    color: #999;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+.open .dropdown-menu {
+    display: block;
+}
+
+/* ========================================
+   PAGINATION
+======================================== */
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    list-style: none;
+}
+
+.pagination > li {
+    display: inline;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #0066cc;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+    margin-left: 0;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover {
+    color: #004499;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a,
+.pagination > .active > span {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #0066cc;
+    border-color: #0066cc;
+}
+
+.pagination > .disabled > a,
+.pagination > .disabled > span {
+    color: #999;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+/* ========================================
+   BREADCRUMB
+======================================== */
+
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+}
+
+.breadcrumb > li {
+    display: inline-block;
+}
+
+.breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+}
+
+.breadcrumb > .active {
+    color: #999;
+}
+
+/* ========================================
+   IE8 SPECIFIC FIXES
+======================================== */
+
+/* PNG transparency fix for IE8 */
+.png-fix {
+    behavior: url(htc/png-fix.htc);
+}
+
+/* Box model fix for IE8 */
+.box-sizing-fix {
+    behavior: url(htc/box-sizing.htc);
+}
+
+/* Media query simulation for IE8 */
+.ie8 .hidden-ie8 { display: none !important; }
+.ie8 .visible-ie8 { display: block !important; }
+
+/* IE8 doesn't support :last-child */
+.last-child {
+    /* specific styles for last child elements */
+}
+
+/* IE8 doesn't support :first-child properly */
+.first-child {
+    /* specific styles for first child elements */
+}
