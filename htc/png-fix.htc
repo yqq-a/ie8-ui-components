@@ -1,0 +1,63 @@
+<!--
+ * IE8 PNG Transparency Fix HTC
+ * Fixes PNG transparency issues in IE8
+ * Usage: behavior: url(htc/png-fix.htc);
+-->
+
+<public:component>
+    <public:attach event="onpropertychange" onevent="doFix()" />
+    
+    <script type="text/javascript">
+    //<![CDATA[
+
+    var supported = /MSIE (5\.5|6|7|8)/.test(navigator.userAgent) && navigator.platform == "Win32";
+    var realSrc;
+    var blankSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
+    if (supported) fixImage();
+
+    function fixImage() {
+        var image = element;
+        var src = image.src;
+
+        // don't reapply the fix if already applied or not an image
+        if (realSrc) {
+            image.src = realSrc;
+        }
+        
+        if (!src || !isPNG(src)) return;
+
+        if (image.nodeName == "IMG") {
+            if (image.isMap) {
+                // don't process image maps
+                return;
+            }
+            
+            realSrc = src;
+            image.src = blankSrc;
+            image.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + src + "', sizingMethod='scale')";
+        } else {
+            // background image
+            if (isPNG(src)) {
+                image.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + src + "', sizingMethod='crop')";
+                // remove background image
+                image.style.backgroundImage = "none";
+            }
+        }
+    }
+
+    function doFix() {
+        // property changed
+        if (event.propertyName == "src") {
+            // source changed
+            fixImage();
+        }
+    }
+
+    function isPNG(src) {
+        return /\.png(\?|$)/i.test(src);
+    }
+
+    //]]>
+    </script>
+</public:component>
