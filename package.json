@@ -1,0 +1,66 @@
+{
+  "name": "ie8-ui-components",
+  "version": "1.0.0",
+  "description": "A comprehensive UI component library specifically designed for Internet Explorer 8 compatibility",
+  "main": "js/ie8-ui.js",
+  "style": "css/ie8-ui.css",
+  "files": [
+    "css/",
+    "js/",
+    "htc/",
+    "examples/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "ie8",
+    "internet-explorer",
+    "ui-components",
+    "css-framework",
+    "javascript-library",
+    "legacy-browser",
+    "compatibility",
+    "css2",
+    "es3"
+  ],
+  "author": {
+    "name": "yqq-a",
+    "email": "qiuchanye7@gmail.com",
+    "url": "https://github.com/yqq-a"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yqq-a/ie8-ui-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yqq-a/ie8-ui-components/issues"
+  },
+  "homepage": "https://yqq-a.github.io/ie8-ui-components/",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "browserslist": [
+    "ie >= 8"
+  ],
+  "scripts": {
+    "build": "echo 'No build process required - pure CSS/JS'",
+    "test": "echo 'Manual testing required in IE8'",
+    "serve": "python -m SimpleHTTPServer 8080 || python -m http.server 8080",
+    "validate": "echo 'Validating CSS and JS syntax'",
+    "minify": "echo 'Consider using YUI Compressor for IE8 compatibility'"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "cdn": {
+    "css": "https://cdn.jsdelivr.net/gh/yqq-a/ie8-ui-components/css/ie8-ui.css",
+    "js": "https://cdn.jsdelivr.net/gh/yqq-a/ie8-ui-components/js/ie8-ui.js"
+  },
+  "compatibility": {
+    "ie": "8+",
+    "firefox": "3.5+",
+    "chrome": "1+",
+    "safari": "3+",
+    "opera": "10+"
+  }
+}
