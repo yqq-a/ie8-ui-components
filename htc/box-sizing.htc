@@ -1,0 +1,84 @@
+<!--
+ * IE8 Box Sizing Fix HTC
+ * Enables box-sizing: border-box for IE8
+ * Usage: behavior: url(htc/box-sizing.htc);
+-->
+
+<public:component>
+    <public:attach event="onpropertychange" onevent="checkPropertyChange()" />
+    <public:attach event="ondetach" onevent="onDetach()" />
+    
+    <script type="text/javascript">
+    //<![CDATA[
+
+    var supportBoxSizing = function() {
+        return (typeof this.element.style.boxSizing !== "undefined" || 
+                typeof this.element.style.webkitBoxSizing !== "undefined" || 
+                typeof this.element.style.mozBoxSizing !== "undefined");
+    };
+
+    var init = function() {
+        if (supportBoxSizing.call(this)) return;
+        
+        this.getOriginalSize();
+        this.updateSize();
+    };
+
+    var checkPropertyChange = function() {
+        var properties = ["width", "height", "padding", "paddingTop", "paddingRight", "paddingBottom", "paddingLeft", 
+                         "border", "borderTop", "borderRight", "borderBottom", "borderLeft", "borderWidth",
+                         "borderTopWidth", "borderRightWidth", "borderBottomWidth", "borderLeftWidth"];
+        
+        var i = properties.length;
+        while (i--) {
+            if (event.propertyName === properties[i]) {
+                this.updateSize();
+                break;
+            }
+        }
+    };
+
+    var getOriginalSize = function() {
+        this.originalWidth = this.element.currentStyle.width;
+        this.originalHeight = this.element.currentStyle.height;
+    };
+
+    var updateSize = function() {
+        var cs = this.element.currentStyle;
+        
+        if (this.originalWidth && this.originalWidth !== "auto") {
+            var width = parseInt(this.originalWidth, 10);
+            var paddingWidth = parseInt(cs.paddingLeft, 10) + parseInt(cs.paddingRight, 10);
+            var borderWidth = parseInt(cs.borderLeftWidth, 10) + parseInt(cs.borderRightWidth, 10);
+            
+            if (!isNaN(width) && !isNaN(paddingWidth) && !isNaN(borderWidth)) {
+                this.element.style.width = (width - paddingWidth - borderWidth) + "px";
+            }
+        }
+        
+        if (this.originalHeight && this.originalHeight !== "auto") {
+            var height = parseInt(this.originalHeight, 10);
+            var paddingHeight = parseInt(cs.paddingTop, 10) + parseInt(cs.paddingBottom, 10);
+            var borderHeight = parseInt(cs.borderTopWidth, 10) + parseInt(cs.borderBottomWidth, 10);
+            
+            if (!isNaN(height) && !isNaN(paddingHeight) && !isNaN(borderHeight)) {
+                this.element.style.height = (height - paddingHeight - borderHeight) + "px";
+            }
+        }
+    };
+
+    var onDetach = function() {
+        if (this.originalWidth) {
+            this.element.style.width = this.originalWidth;
+        }
+        if (this.originalHeight) {
+            this.element.style.height = this.originalHeight;
+        }
+    };
+
+    // Initialize
+    init();
+
+    //]]>
+    </script>
+</public:component>
